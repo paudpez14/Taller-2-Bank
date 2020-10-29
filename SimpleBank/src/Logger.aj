@@ -16,7 +16,7 @@ public aspect Logger {
   
     pointcut done() : execution(* moneyWithdrawal() ) || execution(* moneyMakeTransaction());
     after() : done() {
-        System.out.println(thisJoinPointStaticPart.getSignature().getName());
+        System.out.println(thisJoinPointStaticPart.getSignature());
         System.out.println(cal.getTime());
         try(FileWriter fw = new FileWriter("log.txt", true);
                 BufferedWriter bw = new BufferedWriter(fw);
@@ -30,5 +30,3 @@ public aspect Logger {
 }
     
     }
-    
-} 
