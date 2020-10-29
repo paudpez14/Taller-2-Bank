@@ -11,4 +11,12 @@ public aspect Logger {
     	System.out.println("Se hizo la transaccion");
     	System.out.println(cal.getTime());
     }
-}
+    
+    pointcut withdrawal() : call(* moneyWithdrawal() );
+    after() : withdrawal() {
+    	System.out.println("Se hizo el retiro");
+    	System.out.println(cal.getTime());
+    }
+    
+    
+} 
