@@ -13,8 +13,8 @@ public aspect Logger {
      * pointcut name() : gfdxfhgh;
      * after(): name()	
      */
-    pointcut doneTransaction() : call(* moneyMakeTransaction() );
-    after() : doneTransaction() {
+    pointcut done() :  execution(* moneyWithdrawal() ) || execution(* moneyMakeTransaction()); 
+    after() : done() {
     	System.out.println("Se hizo la transaccion");
     	System.out.println(cal.getTime());
     	try(FileWriter fw = new FileWriter("log.txt", true);
@@ -28,18 +28,18 @@ public aspect Logger {
     		}
     }
     
-    pointcut withdrawal() : call(* moneyWithdrawal() );
-    after() : withdrawal() {
-    	System.out.println("Se hizo el retiro");
-    	System.out.println(cal.getTime());
-    	try(FileWriter fw = new FileWriter("log.txt", true);
-    		    BufferedWriter bw = new BufferedWriter(fw);
-    		    PrintWriter out = new PrintWriter(bw))
-    		    {
-    		        fw.write("Se hizo la transaccion"+cal.getTime());
-    		        fw.write("\n");
-    		        fw.close();
-    		} catch (IOException e) {
-    		}
+//    pointcut withdrawal() : call(* moneyWithdrawal());
+//    after() : withdrawal() {
+//    	System.out.println("Se hizo el retiro");
+//    	System.out.println(cal.getTime());
+//    	try(FileWriter fw = new FileWriter("log.txt", true);
+//    		    BufferedWriter bw = new BufferedWriter(fw);
+//    		    PrintWriter out = new PrintWriter(bw))
+//    		    {
+//    		        fw.write("Se hizo la transaccion"+cal.getTime());
+//    		        fw.write("\n");
+//    		        fw.close();
+//    		} catch (IOException e) {
+//    		}
     }
 } 
