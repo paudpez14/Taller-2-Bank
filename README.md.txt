@@ -1,0 +1,1 @@
+![Alt text](./imagen/captura.jfif?raw=true "aspecto funcionando") 
