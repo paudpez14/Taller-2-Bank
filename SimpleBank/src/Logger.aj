@@ -7,7 +7,6 @@ import java.util.Calendar;
 
 
 public aspect Logger {
-	File file = new File("log.txt");
     Calendar cal = Calendar.getInstance();
     // el nombre del pointcut debe coincidir por ejemplo
     /*
@@ -37,17 +36,10 @@ public aspect Logger {
     		    BufferedWriter bw = new BufferedWriter(fw);
     		    PrintWriter out = new PrintWriter(bw))
     		    {
-    		        fw.write("Se hizo el retiro"+cal.getTime());
+    		        fw.write("Se hizo la transaccion"+cal.getTime());
     		        fw.write("\n");
     		        fw.close();
     		} catch (IOException e) {
     		}
-    }
-    
-    
-    pointcut success() : call(* create*(..) );
-    after() : success() {
-    //Aspecto ejemplo: solo muestra este mensaje después de haber creado un usuario 
-    	System.out.println("**** User created ****");
     }
 } 
